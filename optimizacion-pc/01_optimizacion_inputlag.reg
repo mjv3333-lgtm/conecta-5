@@ -1,0 +1,31 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  OPTIMIZACION INPUT LAG - PC Gaming (i9-12900K / RTX 4070 Ti)
+;  Ejecutar con doble clic. CREA UN PUNTO DE RESTAURACION ANTES.
+;  Reinicia el PC despues de aplicar.
+; ============================================================
+
+; --- Desactivar ACELERACION DEL RATON (lo mas importante de aqui) ---
+; Hace que el raton sea 1:1, aim consistente. MUY recomendado.
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+
+; --- Prioridad a la aplicacion en primer plano (foreground boost) ---
+; Valor 26 (hex) = el juego recibe mas tiempo de CPU.
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
+"Win32PrioritySeparation"=dword:00000026
+
+; --- Quitar throttling de red y de multimedia (mejor en juegos online) ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+"NetworkThrottlingIndex"=dword:ffffffff
+"SystemResponsiveness"=dword:00000000
+
+; --- Prioridad de la tarea "Games" (mas GPU/CPU al juego) ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
+"GPU Priority"=dword:00000008
+"Priority"=dword:00000006
+"Scheduling Category"="High"
+"SFIO Priority"="High"
