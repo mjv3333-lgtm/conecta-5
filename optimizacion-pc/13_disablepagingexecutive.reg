@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  ULTIMO TWEAK REAL DE REGEDIT (seguro con 32 GB RAM)
+;  Doble clic -> Si -> REINICIAR.
+;  Mantiene el kernel y drivers SIEMPRE en RAM (no al disco).
+;  Reduce micro-tirones. Impacto marginal pero real.
+; ============================================================
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"DisablePagingExecutive"=dword:00000001
