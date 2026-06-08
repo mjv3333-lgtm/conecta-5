@@ -1,0 +1,31 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  CONFIG COMPETITIVA ULTRA - Raton + Teclado (valores de pro)
+;  Doble clic -> Si -> REINICIAR.
+;  Crea un punto de restauracion antes.
+; ============================================================
+
+; ===== RATON: 1:1 PURO (lo que usan los profesionales) =====
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+; Aceleracion OFF + "Mejorar precision del puntero" desmarcado:
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+; Velocidad del puntero = 6/11 (notch central = 1:1 sin escalado):
+"MouseSensitivity"="10"
+; Sin hover-time (respuesta inmediata):
+"MouseHoverTime"="0"
+
+; ===== TECLADO: maxima respuesta =====
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"KeyboardDelay"="0"
+"KeyboardSpeed"="31"
+
+; ===== COLA DE DATOS: 16 = minimo competitivo SEGURO =====
+; (mas bajo pierde inputs, sobre todo a 4000/8000 Hz)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
+"MouseDataQueueSize"=dword:00000010
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
+"KeyboardDataQueueSize"=dword:00000010
