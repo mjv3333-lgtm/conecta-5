@@ -1,0 +1,29 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  LATENCIA TECLADO + RATON
+;  Doble clic para aplicar. Reinicia despues.
+;  Crea un punto de restauracion antes por si acaso.
+; ============================================================
+
+; ===== 1. ACELERACION DEL RATON OFF (el de impacto REAL) =====
+; Raton 1:1, aim consistente. Lo mas importante de aqui.
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+
+; ===== 2. TECLADO mas responsivo =====
+; Sin retraso de repeticion + repeticion rapida.
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"KeyboardDelay"="0"
+"KeyboardSpeed"="31"
+
+; ===== 3. COLA DE DATOS RATON (debatido, valor seguro = 20) =====
+; Menos buffer. NO lo bajes mas de 20 o perderas inputs.
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
+"MouseDataQueueSize"=dword:00000014
+
+; ===== 4. COLA DE DATOS TECLADO (debatido, valor seguro = 20) =====
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
+"KeyboardDataQueueSize"=dword:00000014
