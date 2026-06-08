@@ -1,0 +1,29 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  RAZER VIPER V3 PRO @ 8000 Hz - Config competitiva ULTRA
+;  REQUISITO: pon el polling a 8000 Hz en Razer Synapse primero.
+;  Doble clic -> Si -> REINICIAR. Crea punto de restauracion antes.
+; ============================================================
+
+; ===== RATON: 1:1 puro =====
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+"MouseSensitivity"="10"
+"MouseHoverTime"="0"
+
+; ===== TECLADO: maxima respuesta =====
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"KeyboardDelay"="0"
+"KeyboardSpeed"="31"
+
+; ===== COLA acorde a 8000 Hz = 64 (0x40) =====
+; A 8000 Hz llegan MUCHOS paquetes/seg: la cola debe ser GRANDE
+; para no perder inputs. 64 es el optimo para 8000 Hz.
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
+"MouseDataQueueSize"=dword:00000040
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
+"KeyboardDataQueueSize"=dword:00000040
