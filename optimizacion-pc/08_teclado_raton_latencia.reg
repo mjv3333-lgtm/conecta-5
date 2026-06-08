@@ -19,11 +19,11 @@ Windows Registry Editor Version 5.00
 "KeyboardDelay"="0"
 "KeyboardSpeed"="31"
 
-; ===== 3. COLA DE DATOS RATON (debatido, valor seguro = 20) =====
-; Menos buffer. NO lo bajes mas de 20 o perderas inputs.
+; ===== 3. COLA DE DATOS RATON (debatido, valor = 16 decimal) =====
+; Menos buffer. 16 es seguro; NO bajes mas o perderas inputs.
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
-"MouseDataQueueSize"=dword:00000014
+"MouseDataQueueSize"=dword:00000010
 
-; ===== 4. COLA DE DATOS TECLADO (debatido, valor seguro = 20) =====
+; ===== 4. COLA DE DATOS TECLADO (debatido, valor = 16 decimal) =====
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
-"KeyboardDataQueueSize"=dword:00000014
+"KeyboardDataQueueSize"=dword:00000010
