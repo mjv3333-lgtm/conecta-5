@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  TECLADO COMPETITIVO - latencia minima (registro)
+;  Doble clic -> Si -> REINICIAR.
+;  Nota: en tu Wooting 60HE lo que de verdad importa es el
+;  RAPID TRIGGER (en Wootility). Esto es solo el extra de Windows.
+; ============================================================
+
+; ===== Respuesta del teclado =====
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+; Cero retraso al mantener una tecla:
+"KeyboardDelay"="0"
+; Repeticion mas rapida posible:
+"KeyboardSpeed"="31"
+
+; ===== Cola de datos = 16 (optimo para 1000 Hz) =====
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
+"KeyboardDataQueueSize"=dword:00000010
