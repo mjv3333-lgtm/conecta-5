@@ -1,0 +1,103 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================================
+;  *** MASTER INPUT LAG - 25 TWEAKS REALES EN 1 ARCHIVO ***
+;  Raton + Teclado + Sistema + Red + GPU. Todo lo que FUNCIONA y es SEGURO.
+;  Sin placebo. Sin nada que rompa Windows ni banee Valorant.
+;
+;  USO: doble clic -> Si -> REINICIAR el PC.
+;  ANTES: crea un Punto de Restauracion (por si acaso).
+;
+;  NOTA: la latencia de PANTALLA no se toca por regedit -> es tu refresh
+;  rate (500 Hz, ya activado). Aqui va todo lo demas que SI es regedit.
+; ============================================================================
+
+; ===================== RATON (1:1 puro, sin aceleracion) ====================
+; [1][2][3] Aceleracion OFF + "Mejorar precision del puntero" desmarcado
+; [4] Velocidad 6/11 (notch central = 1:1)   [5] Sin hover-time
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
+"MouseSensitivity"="10"
+"MouseHoverTime"="0"
+
+; ===================== TECLADO (maxima respuesta) ===========================
+; [6] Cero retraso de repeticion   [7] Repeticion mas rapida
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"KeyboardDelay"="0"
+"KeyboardSpeed"="31"
+
+; ===================== COLA DE DATOS DE ENTRADA (16 = 1000 Hz) ===============
+; [8] Raton   [9] Teclado  (16 = optimo para 1000 Hz, no bajar mas)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
+"MouseDataQueueSize"=dword:00000010
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
+"KeyboardDataQueueSize"=dword:00000010
+
+; ===================== PRIORIDAD CPU AL JUEGO ===============================
+; [10] Foreground boost (mas CPU a la app activa)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
+"Win32PrioritySeparation"=dword:00000026
+
+; ===================== MULTIMEDIA / RED ====================================
+; [11] Prioridad total multimedia   [12] Sin throttling de red
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+"SystemResponsiveness"=dword:00000000
+"NetworkThrottlingIndex"=dword:ffffffff
+
+; ===================== TAREA "GAMES" (mas GPU/CPU al juego) =================
+; [13] GPU Priority  [14] Priority  [15] Scheduling  [16] SFIO
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
+"GPU Priority"=dword:00000008
+"Priority"=dword:00000006
+"Scheduling Category"="High"
+"SFIO Priority"="High"
+
+; ===================== GAME DVR OFF (libera GPU = +FPS) =====================
+; [17] usuario   [18] sistema
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
+"AllowGameDVR"=dword:00000000
+
+; ===================== POWER THROTTLING OFF (nucleos a tope) ================
+; [19]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
+"PowerThrottlingOff"=dword:00000001
+
+; ===================== UI INSTANTANEA ======================================
+; [20] Menus sin delay   [21] Sin transparencia (libera GPU)
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MenuShowDelay"="0"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+"EnableTransparency"=dword:00000000
+
+; ===================== RED: SIN RESERVA DE ANCHO DE BANDA ===================
+; [22] QoS no reserva el 20%
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched]
+"NonBestEffortLimit"=dword:00000000
+
+; ===================== MEMORIA: KERNEL SIEMPRE EN RAM =======================
+; [23] No paginar el kernel al disco (seguro con 32 GB)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"DisablePagingExecutive"=dword:00000001
+
+; ===================== ARRANQUE LIMPIO =====================================
+; [24] Fast Startup OFF (evita estados raros, arranque consistente)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+"HiberbootEnabled"=dword:00000000
+
+; ===================== PRIVACIDAD ==========================================
+; [25] ID de publicidad OFF
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000000
+
+; ============================================================================
+;  FIN - 25 tweaks reales aplicados. REINICIA el PC.
+;  Esto es TODO lo que el registro puede hacer por tu input lag.
+;  Lo que falta NO es regedit: Rapid Trigger (Wooting) + Reflex (Valorant).
+; ============================================================================
